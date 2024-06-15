@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot >
-        <x-slot name="page_name">Halaman Kelurahan / Create</x-slot>
+        <x-slot name="page_name">Halaman Kelurahan / edit</x-slot>
         <x-slot name="page_title"> Form Data Kelurahan</x-slot>
         <x-slot name="page_content">
         <form class="forms-sample" action="{{ url('dashboard/kelurahan/update', $kelurahan->id) }}" method="post">

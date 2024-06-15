@@ -26,7 +26,6 @@ class PasienController extends Controller
     {
         //validasi form input
         $validated = $request->validate([
-            'id' => 'required|string',
             'kode' => 'required|string',
             'nama' => 'required|string',
             'tmp_lahir' => 'required|string',
@@ -34,12 +33,12 @@ class PasienController extends Controller
             'gender' => 'required|string',
             'email' => 'required|string',
             'alamat' => 'required|string',
-            'nama' => 'required|string',
             'kel_nama' => 'required|string',
         ]);
 
+        
         Pasien::create($validated);
-        return redirect('dashboard/pasien');
+        return redirect('dashboard/pasien')->with('pesan', 'Data berhasil ditambahkan');;
     }
 
     /**
@@ -60,9 +59,11 @@ class PasienController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(string $id)
     {
-        //
+        $pasien = Pasien::find($id);
+        return view('admin.pasien.edit', compact('pasien'));
+        
     }
 
     /**
@@ -74,7 +75,21 @@ class PasienController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validasi form input
+        $validated = $request->validate([
+            'kode' => 'required|string',
+            'nama' => 'required|string',
+            'tmp_lahir' => 'required|string',
+            'tgl_lahir' => 'required|string',
+            'gender' => 'required|string',
+            'email' => 'required|string',
+            'alamat' => 'required|string',
+            'kel_nama' => 'required|string'
+            
+        ]);
+        $pasien = Pasien::find($id);
+        $pasien ->update($validated);
+        return redirect('dashboard/pasien')->with('pesan', 'Data berhasil perbarui');
     }
 
     /**
@@ -85,7 +100,10 @@ class PasienController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pasien = Pasien::find($id);
+        $pasien ->delete();
+
+        return redirect('dashboard/pasien')->with('pesan', 'Data berhasil dihapus');
     }
 
 }

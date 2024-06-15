@@ -1,10 +1,9 @@
 <x-layout>
-    <x-slot name="page_name">Halaman Kelurahan / Detail Tabel Pasien</x-slot>
-    <x-slot name="page_title"> List Data Pasien</x-slot>
+    <x-slot name="page_name">Halaman Pasien / Show</x-slot>
+    <x-slot name="page_title"> List Detail data Pasien</x-slot>
     <x-slot name="page_content">
         <table class="table table-bordered">
             <tr class="table-success">
-                <th>Id</th>
                 <th>Kode</th>
                 <th>Nama Pasien</th>
                 <th>Tempat Lahir</th>
@@ -12,10 +11,9 @@
                 <th>Gender</th>
                 <th>Email</th>
                 <th>Alamat</th>
-                <th>Faskes</th>
+                <th>Faskes kelurahan</th>
             </tr>
             <tr>
-                <td>{{ $pasien->id }}</td>
                 <td>{{ $pasien->kode }}</td>
                 <td>{{ $pasien->nama }}</td>
                 <td>{{ $pasien->tmp_lahir }}</td>
